@@ -25,6 +25,7 @@ int simpan = 0,
 
 void tampilPzl();
 int mencariKata(char *kata);
+bool hasilnya(int simpanHasil);
 
 int main(){
   tampilPzl();
@@ -40,6 +41,8 @@ int main(){
 	    
   for(int i=0; i<banyakKata; i++){
 	   mencariKata(*(kata+i));
+	   hasilnya(simpanHasil);
+	   simpanHasil = 0;
   }
   return 0;
 }
@@ -188,4 +191,11 @@ int mencariKata(char *kata){
 			simpan = cek;
 		}
 	}
+}
+
+bool hasilnya(int simpanHasil){
+    if(simpanHasil>0)
+	cout << "ADA\n";
+    else
+	cout << "TIDAK ADA\n";
 }
