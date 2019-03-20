@@ -24,9 +24,23 @@ int simpan = 0,
     cek = 0;
 
 void tampilPzl();
+int mencariKata(char *kata);
 
 int main(){
   tampilPzl();
+  int banyakKata;
+  cout<<"Jumlah kata yang akan di inputkan : ";
+  cin >> banyakKata;
+  char kata[banyakKata][15];
+  for(int i=0; i<banyakKata;i++){
+	  cout<<"Kata ke- "<<i+1<<" : ";
+	  cin >> kata[i];
+	  strupr(kata[i]);
+  }
+	    
+  for(int i=0; i<banyakKata; i++){
+	   mencariKata(*(kata+i));
+  }
   return 0;
 }
 
@@ -45,7 +59,6 @@ void tampilPzl(){
 int mencariKata(char *kata){	
 	for(int i=0; i<15; i++){
 		for(int j=0; j<15; j++){
-   
 			//horizontal kiri-kanan
 			for(int k=0; k<strlen(kata); k++){
 				if(kata[k]==*(*(puzzle+i)+(j+k))){
@@ -77,6 +90,7 @@ int mencariKata(char *kata){
 			else
 				simpanHasil;
 			simpan = cek;
+			
 			//vertikal Atas-Bawah
 			for(int k=0; k<strlen(kata); k++){
 				if(kata[k]==*(*(puzzle+(i+k))+j)){
@@ -128,6 +142,38 @@ int mencariKata(char *kata){
 			//diagonal kanan bawah-kiri atas
 			for(int k=0; k<strlen(kata); k++){
 				if(kata[k]==*(*(puzzle+(i-k))+(j-k))){
+					simpan = k;
+				}
+				else{
+					simpan != k;
+					break;
+				}
+			}
+			if(simpan==(strlen(kata)-1))
+				simpanHasil = simpanHasil+1;
+			else
+				simpanHasil;
+			simpan = cek;
+			
+			//diagonal kanan atas-kiri bawah
+			for(int k=0; k<strlen(kata); k++){
+				if(kata[k]==*(*(puzzle+(i+k))+(j-k))){
+					simpan = k;
+				}
+				else{
+					simpan != k;
+					break;
+				}
+			}
+			if(simpan==(strlen(kata)-1))
+				simpanHasil = simpanHasil+1;
+			else
+				simpanHasil;
+			simpan = cek;
+			
+			//diagonal kiri bawah-kanan atas
+			for(int k=0; k<strlen(kata); k++){
+				if(kata[k]==*(*(puzzle+(i-k))+(j+k))){
 					simpan = k;
 				}
 				else{
