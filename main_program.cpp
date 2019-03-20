@@ -1,3 +1,8 @@
+/* Nama : Muhammad Azriel B.S 	(1817051024)
+	  Muhammad Fajru  R 	(1857051003)
+	  Muhammad Irfan 	(1817051071)
+	  Noval Aditya Marlon 	(1817051019) */
+
 #include <iostream>
 #include <cstring>
 using namespace std;
@@ -27,27 +32,34 @@ void tampilPzl();
 int mencariKata(char *kata);
 bool hasilnya(int simpanHasil);
 
-int main(){
+
+int main(){//Program utama
   tampilPzl();
   int banyakKata;
-  cout<<"Jumlah kata yang akan di inputkan : ";
-  cin >> banyakKata;
-  char kata[banyakKata][15];
-  for(int i=0; i<banyakKata;i++){
-	  cout<<"Kata ke- "<<i+1<<" : ";
-	  cin >> kata[i];
-	  strupr(kata[i]);
-  }
-	    
-  for(int i=0; i<banyakKata; i++){
-	   mencariKata(*(kata+i));
-	   hasilnya(simpanHasil);
-	   simpanHasil = 0;
-  }
-  return 0;
+  char kembali;
+  do{
+	  cout<<"Jumlah kata yang akan di inputkan : ";
+	  cin >> banyakKata;
+	  char kata[banyakKata][15];
+	  for(int i=0; i<banyakKata;i++){
+		  cout<<"Kata ke- "<<i+1<<" : ";
+		  cin >> kata[i];
+		  strupr(kata[i]);
+	  }
+
+	  for(int i=0; i<banyakKata; i++){
+		   mencariKata(*(kata+i));
+		   hasilnya(simpanHasil);
+		   simpanHasil = 0;
+	  }
+  cout<<"Apakah ingin mencari kata lagi ? (Y/T) " ;
+  cin >> kembali;
+  }while ( kembali == 'Y'|| kembali == 'y');
+
+return 0;
 }
 
-void tampilPzl(){
+void tampilPzl(){//menampilkan tabel puzzel
   cout << "-------------------------------------------------\n";
     for(int i=0; i<15; i++){
         cout << "|  ";
@@ -59,7 +71,7 @@ void tampilPzl(){
  cout << "-------------------------------------------------\n";
 }
 
-int mencariKata(char *kata){	
+int mencariKata(char *kata){//mencari kata
 	for(int i=0; i<15; i++){
 		for(int j=0; j<15; j++){
 			//horizontal kiri-kanan
@@ -193,7 +205,7 @@ int mencariKata(char *kata){
 	}
 }
 
-bool hasilnya(int simpanHasil){
+bool hasilnya(int simpanHasil){ //menampilkan ada atau tidaknya kata tersebut
     if(simpanHasil>0)
 	cout << "ADA\n";
     else
