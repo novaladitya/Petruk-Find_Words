@@ -18,6 +18,9 @@ char pzl[15][15] =
  {'P', 'D', 'C', 'R', 'Z', 'M', 'S', 'N', 'G', 'R', 'D', 'N', 'R', 'P', 'Z'},
  {'O', 'H', 'N', 'K', 'Z', 'W', 'A', 'T', 'E', 'R', 'J', 'G', 'T', 'R', 'A'}};
 char (*puzzle)[15] = pzl;
+int simpan = 0,
+    simpanHasil = 0,
+    cek = 0;
 
 void tampilPzl();
 
