@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 using namespace std;
 
 char pzl[15][15] =
@@ -76,4 +77,6 @@ int mencariKata(char *kata){
 			else
 				simpanHasil;
 			simpan = cek;
-			
+		}
+	}
+}
